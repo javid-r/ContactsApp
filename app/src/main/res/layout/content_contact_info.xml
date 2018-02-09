@@ -28,6 +28,7 @@
                 android:layout_marginTop="20dp"
                 android:textSize="22sp"
                 android:text="name"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -58,7 +59,7 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/txt_info_emaile"
+        android:id="@+id/txt_info_email"
         android:textSize="18sp"
         android:text="Email"
         android:maxLines="1"

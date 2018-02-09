@@ -4,4 +4,5 @@
     <string name="title_activity_contacts_list">ContactsListActivity</string>
     <string name="title_activity_contact_info">ContactInfoActivity</string>
     <string name="title_activity_add_contact">AddContactActivity</string>
+    <string name="title_activity_edit_contact">EditContactActivity</string>
 </resources>

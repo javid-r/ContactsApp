@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,14 +19,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        findViewById(R.id.btn_main_contacts_list).setOnClickListener(new View.OnClickListener() {
+        ((Button) findViewById(R.id.btn_main_contacts_list)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ContactsListActivity.class));
             }
         });
 
-        findViewById(R.id.btn_main_add_contact).setOnClickListener(new View.OnClickListener() {
+        ((Button) findViewById(R.id.btn_main_add_contact)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, AddContactActivity.class));

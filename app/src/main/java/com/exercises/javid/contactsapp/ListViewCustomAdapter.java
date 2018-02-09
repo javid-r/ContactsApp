@@ -23,7 +23,14 @@ public class ListViewCustomAdapter extends BaseAdapter {
     private LayoutInflater inflater = null;
 
     public ListViewCustomAdapter(Context context) {
-        DB_Handler db_handler = new DB_Handler(context);
+
+        DatabaseHandler db_handler = new DatabaseHandler(
+                context,
+                Constant.DB_NAME,
+                null,
+                Constant.VERSION
+        );
+
         contactsList = db_handler.getContactsList();
         this.context = context;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -48,11 +55,11 @@ public class ListViewCustomAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         HashMap<String, String> contact = contactsList.get(position);
-        final String name = contact.get(DB_Handler.T_NAME) + "_" +
-                contact.get(DB_Handler.T_L_NAME);
-        final String phone = contact.get(DB_Handler.T_PHONE);
-        final String date = contact.get(DB_Handler.T_DATE);
-        final String id = contact.get(DB_Handler.T_ID);
+        final String name = contact.get(Constant.T_NAME) + "_" +
+                contact.get(Constant.T_L_NAME);
+        final String phone = contact.get(Constant.T_PHONE);
+        final String date = contact.get(Constant.T_DATE);
+        final String id = contact.get(Constant.T_ID);
 
         View rowView = inflater.inflate(R.layout.list_item, null);
         TextView _name = rowView.findViewById(R.id.txt_name);
@@ -68,7 +75,7 @@ public class ListViewCustomAdapter extends BaseAdapter {
             public void onClick(View v) {
 //                Toast.makeText(context, "Clicked " + name, Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(context, ContactInfoActivity.class);
-                intent.putExtra(DB_Handler.T_ID, id);
+                intent.putExtra(Constant.T_ID, id);
                 context.startActivity(intent);
             }
         });

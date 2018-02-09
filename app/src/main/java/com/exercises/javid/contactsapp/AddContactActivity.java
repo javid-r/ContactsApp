@@ -2,11 +2,13 @@ package com.exercises.javid.contactsapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddContactActivity extends AppCompatActivity {
 
@@ -18,6 +20,7 @@ public class AddContactActivity extends AppCompatActivity {
     private EditText desc;
 
     private Activity context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,7 @@ public class AddContactActivity extends AppCompatActivity {
         email = findViewById(R.id.edit_add_email);
         address = findViewById(R.id.edit_add_address);
         desc = findViewById(R.id.edit_add_desc);
+
         ((Button) findViewById(R.id.btn_add_save)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +47,7 @@ public class AddContactActivity extends AppCompatActivity {
                 email.setText("");
                 address.setText("");
                 desc.setText("");
+                Toast.makeText(context, "Contact saved successfully", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -57,9 +62,14 @@ public class AddContactActivity extends AppCompatActivity {
         String desc = this.desc.getText().toString();
 
         Record record = new Record(name, lastName, phone, email, address, desc);
-        DB_Handler db_handler = new DB_Handler(context);
-        db_handler.addRecord(record);
+        DatabaseHandler db_handler = new DatabaseHandler(
+                context,
+                Constant.DB_NAME,
+                null,
+                Constant.VERSION
+        );
 
+        db_handler.addContactRecord(record);
         db_handler.close();
     }
 

@@ -14,8 +14,8 @@ public class ContactsListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ((ListView) findViewById(R.id.ls_contacts_list)).setAdapter(
-                new ListViewCustomAdapter(ContactsListActivity.this)
-        );
+        ListView contactsList = (ListView) findViewById(R.id.ls_contacts_list);
+        ListViewCustomAdapter adapter = new ListViewCustomAdapter(ContactsListActivity.this);
+        contactsList.setAdapter(adapter);
     }
 }
